@@ -35,12 +35,6 @@ class Main extends Component {
       );
     }
 
-    const AboutPage = () => {
-      return(
-        <About leaders={this.props.leaders} />
-      );
-    }
-
     const DishWithId = ({match}) => {
       return(
         <DishDetail dish={this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]} 
@@ -56,7 +50,7 @@ class Main extends Component {
           <Route path="/home" component={HomePage} />
           <Route exact path="/menu" component={() => <Menu dishes={this.props.dishes} /> } />
           <Route path="/menu/:dishId" component={DishWithId} />
-          <Route path="/aboutus" component={AboutPage} />
+          <Route path="/aboutus" component={() => <About leaders={this.props.leaders} /> } />
           <Route exact path="/contactus" component={Contact} />
           <Redirect to="/home" />
         </Switch>
